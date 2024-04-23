@@ -1,4 +1,4 @@
-#include <stdio.h>
+/*include <stdio.h>
 #include <stdlib.h>
 #include "grocery_billing1.h"
 
@@ -50,4 +50,60 @@ void generate_receipt(char **names, float *prices, int *quantities, int numItems
     printf("Discounted Amount: $%.2f\n", discount_amount);
     printf("Discounted Total: $%.2f\n", discounted_total);
     printf("\n");
+}*/
+
+
+//updated code
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "grocery_billing1.h"
+#include "login.h"
+
+void add_item(Item **items, int *numItems, int *capacity) {
+    if (*numItems >= *capacity) {
+        *capacity *= 2;
+        *items = realloc(*items, *capacity * sizeof(Item));
+    }
+
+    printf("Enter item name: ");
+    scanf("%s", (*items)[*numItems].name);
+    printf("Enter item price: ");
+    scanf("%f", &(*items)[*numItems].price);
+    printf("Enter quantity: ");
+    scanf("%d", &(*items)[*numItems].quantity);
+    printf("Item added to bill.\n");
+    (*numItems)++;
 }
+
+float calculate_total(const Item *items, int numItems) {
+    float total = 0;
+    for (int i = 0; i < numItems; i++) {
+        total += items[i].price * items[i].quantity;
+    }
+    return total;
+}
+
+void generate_receipt(const Item *items, int numItems, const Customer *customer, float discount) {
+    float total_cost = calculate_total(items, numItems);
+    float discount_amount = total_cost * (discount / 100.0);
+    float discounted_total = total_cost - discount_amount;
+
+    printf("********** Grocery Bill **********\n");
+    printf("Customer Name: %s\n", customer->name);
+    printf("Customer Address: %s\n", customer->address);
+    printf("----------------------------------\n");
+    for (int i = 0; i < numItems; i++) {
+        printf("%s: $%.2f x %d = $%.2f\n", items[i].name, 
+               items[i].price, items[i].quantity, 
+               items[i].price * items[i].quantity);
+    }
+    printf("----------------------------------\n");
+    printf("Total: $%.2f\n", total_cost);
+    printf("Discount: %.2f%%\n", discount);
+    printf("Discounted Amount: $%.2f\n", discount_amount);
+    printf("Discounted Total: $%.2f\n", discounted_total);
+    printf("\n");
+}
+
+
