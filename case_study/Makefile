@@ -1,4 +1,4 @@
-
+/*
 # Compiler
 CC = gcc
 
@@ -24,4 +24,26 @@ $(TARGET): $(OBJS)
 
 # Clean rule
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(OBJS) $(TARGET)*/
+
+
+//updated
+CC = gcc
+CFLAGS = -Wall -Wextra
+
+all: grocery_billing1
+
+grocery_billing: main.o grocery_billing1.o login.o
+	$(CC) $(CFLAGS) -o grocery_billing1 main.o grocery_billing1.o login.o
+
+main.o: main.c grocery_billing1.h login.h
+	$(CC) $(CFLAGS) -c main.c
+
+grocery_billing.o: grocery_billing1.c grocery_billing1.h
+	$(CC) $(CFLAGS) -c grocery_billing1.c
+
+login.o: login.c login.h
+	$(CC) $(CFLAGS) -c login.c
+
+clean:
+	rm -f *.o grocery_billing1
