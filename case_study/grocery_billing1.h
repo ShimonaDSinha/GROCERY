@@ -10,9 +10,8 @@ void generate_receipt(char **names, float *prices, int *quantities, int numItems
 #endif*/
 
 
-//updated code
-
-#ifndef GROCERY_BILLING1_H
+//updated code-2
+/*#ifndef GROCERY_BILLING1_H
 #define GROCERY_BILLING1_H
 
 #define INITIAL_CAPACITY 10
@@ -35,4 +34,23 @@ void add_item(Item **items, int *numItems, int *capacity);
 float calculate_total(const Item *items, int numItems);
 void generate_receipt(const Item *items, int numItems, const Customer *customer, float discount);
 
-#endif
+#endif*/
+//update-3
+#ifndef GROCERY_BILLING1_H
+#define GROCERY_BILLING1_H
+
+#define MAX_NAME_LENGTH 50
+#define INITIAL_CAPACITY 10
+
+typedef struct {
+    char name[MAX_NAME_LENGTH];
+    float price;
+    int quantity;
+} Item;
+
+typedef struct {
+    char name[MAX_NAME_LENGTH];
+    char address[100];
+    float discount;
+} Customer;
+
