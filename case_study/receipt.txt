@@ -1,0 +1,10 @@
+********** Grocery Bill **********
+Customer Name: shimona
+Customer Address: bangalore
+----------------------------------
+sugar: $23.00 x 3 = $69.00
+----------------------------------
+Total: $69.00
+Discount: 30.00%
+Discounted Amount: $20.70
+Discounted Total: $48.30
