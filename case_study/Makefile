@@ -27,8 +27,8 @@ clean:
 	rm -f $(OBJS) $(TARGET)*/
 
 
-//updated
-CC = gcc
+//updated file part-2
+/*CC = gcc
 CFLAGS = -Wall -Wextra
 
 all: grocery_billing1
@@ -46,4 +46,40 @@ login.o: login.c login.h
 	$(CC) $(CFLAGS) -c login.c
 
 clean:
-	rm -f *.o grocery_billing1
+	rm -f *.o grocery_billing1*/
+
+//Updated file part-3
+CC = gcc
+
+# Compiler flags
+CFLAGS = -Wall -Wextra -std=c11
+
+# Object files
+OBJECTS = main.o grocery_billing1.o login.o
+
+# Executable target
+TARGET = program
+
+# Default target: build the executable
+all: $(TARGET)
+
+# Link object files to create the executable
+$(TARGET): $(OBJECTS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJECTS)
+
+# Compile main.c to main.o
+main.o: main.c grocery_billing1.h login.h
+	$(CC) $(CFLAGS) -c main.c
+
+# Compile grocery_billing1.c to grocery_billing1.o
+grocery_billing1.o: grocery_billing1.c grocery_billing1.h
+	$(CC) $(CFLAGS) -c grocery_billing1.c
+
+# Compile login.c to login.o
+login.o: login.c login.h
+	$(CC) $(CFLAGS) -c login.c
+
+# Clean up object files and executable
+clean:
+	rm -f $(OBJECTS) $(TARGET)
+
