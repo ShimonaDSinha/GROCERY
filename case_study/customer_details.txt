@@ -1,0 +1,15 @@
+Customer Name: simonozare
+Customer Address: bangalore
+Discount: 30.00%
+Customer Name: shimona
+Customer Address: bangalore
+Discount: 30.00%
+Customer Name: shimona
+Customer Address: bangalore
+Discount: 23.00%
+Customer Name: 2
+Customer Address: c
+Discount: 3.00%
+Customer Name: gotala
+Customer Address: dumdum
+Discount: 34.00%
